@@ -4,35 +4,37 @@
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
-  <Id>8c3a9f52-6a73-4b0d-9f2a-2c0f5b2d8e3a</Id>
+
+  <Id>6f6b9c6a-7d3a-4d0c-9c8a-ec1b1f9f0001</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Pattern</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Masterfile Validator"/>
-  <Description DefaultValue="Validate marketplace masterfiles (eBay UK) with red/yellow highlights and comments."/>
+  <Description DefaultValue="Validate eBay UK masterfiles with red/yellow highlights."/>
+
   <Hosts>
     <Host Name="Workbook"/>
   </Hosts>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://REPLACE-WITH-SHAREPOINT-URL/taskpane.html"/>
+    <SourceLocation DefaultValue="https://hieabhi.github.io/masterfile-validator/taskpane.html"/>
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
 
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
     <Hosts>
       <Host xsi:type="Workbook">
         <DesktopFormFactor>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <CustomTab id="Masterfile.Tab">
               <Label resid="Tab.Label"/>
-
               <Group id="Masterfile.Group">
                 <Label resid="Group.Label"/>
 
-                <Control xsi:type="Button" id="Btn.Validate.EbayUK">
-                  <Label resid="Btn.Validate.EbayUK.Label"/>
+                <Control xsi:type="Button" id="Btn.EbayUK">
+                  <Label resid="Btn.EbayUK.Label"/>
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>validateEbayUK</FunctionName>
                   </Action>
@@ -45,8 +47,8 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="Btn.OpenReport">
-                  <Label resid="Btn.OpenReport.Label"/>
+                <Control xsi:type="Button" id="Btn.Report">
+                  <Label resid="Btn.Report.Label"/>
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>openValidationReport</FunctionName>
                   </Action>
@@ -63,16 +65,18 @@
 
     <Resources>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://REPLACE-WITH-SHAREPOINT-URL/taskpane.html"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://REPLACE-WITH-SHAREPOINT-URL/commands.html"/>
+        <bt:Url id="Taskpane.Url"
+                DefaultValue="https://hieabhi.github.io/masterfile-validator/taskpane.html"/>
+        <bt:Url id="Commands.Url"
+                DefaultValue="https://hieabhi.github.io/masterfile-validator/commands.html"/>
       </bt:Urls>
 
       <bt:ShortStrings>
         <bt:String id="Tab.Label" DefaultValue="Masterfile"/>
         <bt:String id="Group.Label" DefaultValue="Marketplaces"/>
-        <bt:String id="Btn.Validate.EbayUK.Label" DefaultValue="eBay UK Validate"/>
-        <bt:String id="Btn.Clear.Label" DefaultValue="Clear Highlights/Comments"/>
-        <bt:String id="Btn.OpenReport.Label" DefaultValue="Open Validation Report"/>
+        <bt:String id="Btn.EbayUK.Label" DefaultValue="eBay UK Validate"/>
+        <bt:String id="Btn.Clear.Label" DefaultValue="Clear Highlights"/>
+        <bt:String id="Btn.Report.Label" DefaultValue="Open Validation Report"/>
       </bt:ShortStrings>
     </Resources>
   </VersionOverrides>
