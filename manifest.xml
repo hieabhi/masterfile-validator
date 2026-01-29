@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>8c3a9f52-6a73-4b0d-9f2a-2c0f5b2d8e3a</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Pattern</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Masterfile Validator"/>
+  <Description DefaultValue="Validate marketplace masterfiles (eBay UK) with red/yellow highlights and comments."/>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://REPLACE-WITH-SHAREPOINT-URL/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="Masterfile.Tab">
+              <Label resid="Tab.Label"/>
+
+              <Group id="Masterfile.Group">
+                <Label resid="Group.Label"/>
+
+                <Control xsi:type="Button" id="Btn.Validate.EbayUK">
+                  <Label resid="Btn.Validate.EbayUK.Label"/>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>validateEbayUK</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="Btn.Clear">
+                  <Label resid="Btn.Clear.Label"/>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>clearHighlightsAndNotes</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="Btn.OpenReport">
+                  <Label resid="Btn.OpenReport.Label"/>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>openValidationReport</FunctionName>
+                  </Action>
+                </Control>
+
+              </Group>
+            </CustomTab>
+          </ExtensionPoint>
+
+          <FunctionFile resid="Commands.Url"/>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Urls>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://REPLACE-WITH-SHAREPOINT-URL/taskpane.html"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://REPLACE-WITH-SHAREPOINT-URL/commands.html"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="Tab.Label" DefaultValue="Masterfile"/>
+        <bt:String id="Group.Label" DefaultValue="Marketplaces"/>
+        <bt:String id="Btn.Validate.EbayUK.Label" DefaultValue="eBay UK Validate"/>
+        <bt:String id="Btn.Clear.Label" DefaultValue="Clear Highlights/Comments"/>
+        <bt:String id="Btn.OpenReport.Label" DefaultValue="Open Validation Report"/>
+      </bt:ShortStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
